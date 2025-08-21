@@ -1,1 +1,7 @@
-# comet-orbit-simulator-ver2
+numpy
+
+matplotlib
+
+scipy
+
+streamlit
