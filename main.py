@@ -1,6 +1,5 @@
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import time
@@ -334,10 +333,16 @@ def main():
             # 궤도 경로를 시간에 따라 색상 변화로 표현
             fig.add_trace(go.Scatter(
                 x=x_pos, y=y_pos,
-                mode='lines',
-                line=dict(color=times/YEAR, colorscale='Viridis', width=2),
+                mode='lines+markers',
+                line=dict(width=2),
+                marker=dict(
+                    color=times/YEAR,
+                    colorscale='Viridis',
+                    size=3,
+                    colorbar=dict(title="시간 (년)")
+                ),
                 name='궤도 경로',
-                hovertemplate='시간: %{marker.color:.1f}년<extra></extra>'
+                hovertemplate='시간: %{marker.color:.1f}년<br>위치: (%{x:.2f}, %{y:.2f}) AU<extra></extra>'
             ))
             
             # 초기 위치
